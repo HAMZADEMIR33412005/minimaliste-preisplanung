@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
-const PricingTable = () => {
+interface PricingTableProps {
+  onSelectPackage: (name: string, price: number) => void;
+  selectedPackage: string | null;
+}
+
+const PricingTable = ({ onSelectPackage, selectedPackage }: PricingTableProps) => {
   const plans = [
     {
       name: "BASIC",
       price: "129,90€",
+      priceNumber: 129.9,
       suffix: "/mo",
       features: [
         { name: "Software-Aktualisierungen", included: true },
@@ -19,6 +25,7 @@ const PricingTable = () => {
     {
       name: "PREMIUM",
       price: "169,90€",
+      priceNumber: 169.9,
       suffix: "/mo",
       features: [
         { name: "Software-Aktualisierungen", included: true },
@@ -44,7 +51,11 @@ const PricingTable = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:border-seablue transition-all duration-300 transform hover:scale-105"
+              className={`bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:scale-105 ${
+                selectedPackage === plan.name
+                  ? "border-seablue ring-2 ring-seablue"
+                  : "border-gray-100 hover:border-seablue"
+              }`}
             >
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-center mb-4">{plan.name}</h3>
@@ -75,7 +86,14 @@ const PricingTable = () => {
                 </div>
               </div>
               <div className="p-8 bg-gray-50">
-                <button className="w-full py-3 px-6 text-white bg-seablue rounded-lg hover:bg-seablue-dark transition-colors duration-300 transform hover:scale-105">
+                <button
+                  onClick={() => onSelectPackage(plan.name, plan.priceNumber)}
+                  className={`w-full py-3 px-6 text-white rounded-lg transition-colors duration-300 transform hover:scale-105 ${
+                    selectedPackage === plan.name
+                      ? "bg-seablue-dark"
+                      : "bg-seablue hover:bg-seablue-dark"
+                  }`}
+                >
                   Auswählen
                 </button>
               </div>

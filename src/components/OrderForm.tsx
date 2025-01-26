@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const OrderForm = () => {
+interface OrderFormProps {
+  selectedPackage: string | null;
+  packagePrice: number;
+}
+
+const OrderForm = ({ selectedPackage, packagePrice }: OrderFormProps) => {
   const [selectedPages, setSelectedPages] = useState(1);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [extras, setExtras] = useState<string[]>([]);
@@ -147,9 +152,14 @@ const OrderForm = () => {
           </div>
 
           <div className="flex flex-col items-center">
-            <div className="text-2xl font-bold mb-4">
+            <div className="text-2xl font-bold mb-2">
               Gesamtpreis: {calculateTotal()}€
             </div>
+            {selectedPackage && (
+              <div className="text-lg text-gray-600 mb-4">
+                + {packagePrice}€ monatliche Betreuung ({selectedPackage})
+              </div>
+            )}
             <button className="w-full md:w-auto py-3 px-8 bg-seablue text-white rounded-lg hover:bg-seablue-dark transition-all duration-300 transform hover:scale-105">
               Anfrage absenden
             </button>

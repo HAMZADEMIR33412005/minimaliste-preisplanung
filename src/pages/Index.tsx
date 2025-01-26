@@ -11,7 +11,9 @@ const Index = () => {
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [packagePrice, setPackagePrice] = useState(0);
   const [selectedPages, setSelectedPages] = useState(1);
+  const [pagesPrice, setPagesPrice] = useState(600);
   const [extras, setExtras] = useState<string[]>([]);
+  const [extrasTotal, setExtrasTotal] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
   const [locationInitialPrice, setLocationInitialPrice] = useState(0);
   const [locationYearlyPrice, setLocationYearlyPrice] = useState(0);
@@ -54,9 +56,9 @@ const Index = () => {
           selectedPackage={selectedPackage}
           packagePrice={packagePrice}
           selectedPages={selectedPages}
-          pagesPrice={600 + (selectedPages - 1) * 200}
+          pagesPrice={pagesPrice}
           extras={extras}
-          extrasTotal={extras.length * 100}
+          extrasTotal={extrasTotal}
           selectedLocation={selectedLocation}
           locationInitialPrice={locationInitialPrice}
           locationYearlyPrice={locationYearlyPrice}

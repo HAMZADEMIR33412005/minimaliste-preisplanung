@@ -39,12 +39,12 @@ const Summary = ({
           {selectedPackage && (
             <div className="flex justify-between items-center border-b pb-4">
               <span className="font-semibold">Gewähltes Paket:</span>
-              <span>{selectedPackage} ({packagePrice}€/mo)</span>
+              <span>{selectedPackage} ({packagePrice.toFixed(2)}€/mo)</span>
             </div>
           )}
           <div className="flex justify-between items-center border-b pb-4">
             <span className="font-semibold">Anzahl Seiten:</span>
-            <span>{selectedPages} ({pagesPrice}€)</span>
+            <span>{selectedPages} ({pagesPrice.toFixed(2)}€)</span>
           </div>
           {extras.length > 0 && (
             <div className="border-b pb-4">
@@ -58,7 +58,7 @@ const Summary = ({
               </ul>
               <div className="flex justify-between mt-2">
                 <span className="font-semibold">Extras Gesamt:</span>
-                <span>{extrasTotal}€</span>
+                <span>{extrasTotal.toFixed(2)}€</span>
               </div>
             </div>
           )}
@@ -68,11 +68,11 @@ const Summary = ({
               <div className="mt-2 space-y-2">
                 <div className="flex justify-between">
                   <span>{selectedLocation}</span>
-                  <span>{locationInitialPrice}€ einmalig</span>
+                  <span>{locationInitialPrice.toFixed(2)}€ einmalig</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Jährliche Verlängerung</span>
-                  <span>{locationYearlyPrice}€/Jahr</span>
+                  <span>{locationYearlyPrice.toFixed(2)}€/Jahr</span>
                 </div>
               </div>
             </div>
@@ -80,15 +80,15 @@ const Summary = ({
           <div className="pt-4 space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold">Einmalige Kosten:</span>
-              <span className="text-xl font-bold text-seablue">{oneTimeTotal}€</span>
+              <span className="text-xl font-bold text-seablue">{oneTimeTotal.toFixed(2)}€</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold">Monatliche Kosten:</span>
-              <span className="text-xl font-bold text-seablue">{monthlyTotal}€</span>
+              <span className="text-xl font-bold text-seablue">{monthlyTotal.toFixed(2)}€</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold">Jährliche Kosten:</span>
-              <span className="text-xl font-bold text-seablue">{yearlyTotal}€</span>
+              <span className="text-xl font-bold text-seablue">{yearlyTotal.toFixed(2)}€</span>
             </div>
           </div>
         </div>

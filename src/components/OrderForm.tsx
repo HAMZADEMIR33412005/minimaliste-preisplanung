@@ -85,7 +85,7 @@ const OrderForm = ({ selectedPackage, packagePrice }: OrderFormProps) => {
                   }`}
                 >
                   <div className="text-sm">{option.pages} Page{option.pages > 1 ? "s" : ""}</div>
-                  <div className="font-semibold">{option.price}€</div>
+                  <div className="font-semibold">{option.price.toFixed(2)}€</div>
                 </button>
               ))}
             </div>
@@ -144,7 +144,7 @@ const OrderForm = ({ selectedPackage, packagePrice }: OrderFormProps) => {
                   />
                   <div className="flex justify-between w-full">
                     <span>{option.name}</span>
-                    <span className="font-semibold">{option.price}€</span>
+                    <span className="font-semibold">{option.price.toFixed(2)}€</span>
                   </div>
                 </label>
               ))}
@@ -153,11 +153,11 @@ const OrderForm = ({ selectedPackage, packagePrice }: OrderFormProps) => {
 
           <div className="flex flex-col items-center">
             <div className="text-2xl font-bold mb-2">
-              Gesamtpreis: {calculateTotal()}€
+              Gesamtpreis: {calculateTotal().toFixed(2)}€
             </div>
             {selectedPackage && (
               <div className="text-lg text-gray-600 mb-4">
-                + {packagePrice}€ monatliche Betreuung ({selectedPackage})
+                + {packagePrice.toFixed(2)}€ monatliche Betreuung ({selectedPackage})
               </div>
             )}
             <button className="w-full md:w-auto py-3 px-8 bg-seablue text-white rounded-lg hover:bg-seablue-dark transition-all duration-300 transform hover:scale-105">

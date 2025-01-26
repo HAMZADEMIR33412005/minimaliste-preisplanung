@@ -7,6 +7,9 @@ interface SummaryProps {
   pagesPrice: number;
   extras: string[];
   extrasTotal: number;
+  selectedLocation: string | null;
+  locationInitialPrice: number;
+  locationYearlyPrice: number;
 }
 
 const Summary = ({
@@ -16,8 +19,13 @@ const Summary = ({
   pagesPrice,
   extras,
   extrasTotal,
+  selectedLocation,
+  locationInitialPrice,
+  locationYearlyPrice,
 }: SummaryProps) => {
-  const total = pagesPrice + extrasTotal + (packagePrice * 12);
+  const monthlyTotal = packagePrice;
+  const oneTimeTotal = pagesPrice + extrasTotal + (locationInitialPrice || 0);
+  const yearlyTotal = (packagePrice * 12) + (locationYearlyPrice || 0);
 
   return (
     <section className="w-full py-16 px-4 bg-white">
@@ -54,13 +62,35 @@ const Summary = ({
               </div>
             </div>
           )}
-          <div className="flex justify-between items-center pt-4">
-            <span className="text-xl font-bold">Gesamtpreis:</span>
-            <span className="text-xl font-bold text-seablue">{total}€</span>
+          {selectedLocation && (
+            <div className="border-b pb-4">
+              <span className="font-semibold">Gewählter Firmensitz:</span>
+              <div className="mt-2 space-y-2">
+                <div className="flex justify-between">
+                  <span>{selectedLocation}</span>
+                  <span>{locationInitialPrice}€ einmalig</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Jährliche Verlängerung</span>
+                  <span>{locationYearlyPrice}€/Jahr</span>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="pt-4 space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-xl font-bold">Einmalige Kosten:</span>
+              <span className="text-xl font-bold text-seablue">{oneTimeTotal}€</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-xl font-bold">Monatliche Kosten:</span>
+              <span className="text-xl font-bold text-seablue">{monthlyTotal}€</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-xl font-bold">Jährliche Kosten:</span>
+              <span className="text-xl font-bold text-seablue">{yearlyTotal}€</span>
+            </div>
           </div>
-          <p className="text-sm text-gray-600 text-center mt-4">
-            Inklusive {packagePrice}€ monatliche Betreuungsgebühr
-          </p>
         </div>
       </motion.div>
     </section>

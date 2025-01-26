@@ -12,10 +12,19 @@ const Index = () => {
   const [packagePrice, setPackagePrice] = useState(0);
   const [selectedPages, setSelectedPages] = useState(1);
   const [extras, setExtras] = useState<string[]>([]);
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const [locationInitialPrice, setLocationInitialPrice] = useState(0);
+  const [locationYearlyPrice, setLocationYearlyPrice] = useState(0);
 
   const handlePackageSelect = (name: string, price: number) => {
     setSelectedPackage(name);
     setPackagePrice(price);
+  };
+
+  const handleLocationSelect = (city: string, initialPrice: number, yearlyPrice: number) => {
+    setSelectedLocation(city);
+    setLocationInitialPrice(initialPrice);
+    setLocationYearlyPrice(yearlyPrice);
   };
 
   return (
@@ -37,7 +46,10 @@ const Index = () => {
           />
         </div>
         <RequirementsList />
-        <LocationOptions />
+        <LocationOptions 
+          onSelectLocation={handleLocationSelect}
+          selectedLocation={selectedLocation}
+        />
         <Summary
           selectedPackage={selectedPackage}
           packagePrice={packagePrice}
@@ -45,6 +57,9 @@ const Index = () => {
           pagesPrice={600 + (selectedPages - 1) * 200}
           extras={extras}
           extrasTotal={extras.length * 100}
+          selectedLocation={selectedLocation}
+          locationInitialPrice={locationInitialPrice}
+          locationYearlyPrice={locationYearlyPrice}
         />
       </main>
     </motion.div>

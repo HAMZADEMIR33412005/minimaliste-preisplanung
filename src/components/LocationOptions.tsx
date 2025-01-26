@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
 import { MapPin, Check } from "lucide-react";
 
-const LocationOptions = () => {
+interface LocationOptionsProps {
+  onSelectLocation: (city: string, initialPrice: number, yearlyPrice: number) => void;
+  selectedLocation: string | null;
+}
+
+const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptionsProps) => {
   const locations = [
     {
       city: "Dubai",
-      initialPrice: "14.000€",
-      yearlyPrice: "8.000€",
+      initialPrice: 14000,
+      yearlyPrice: 8000,
       benefits: [
         "Umfassende Beratung",
         "Visa-Beantragung",
@@ -18,8 +23,8 @@ const LocationOptions = () => {
     },
     {
       city: "Miami",
-      initialPrice: "8.000€",
-      yearlyPrice: "4.000€",
+      initialPrice: 8000,
+      yearlyPrice: 4000,
       benefits: [
         "Geschäftsregistrierung",
         "Visa-Unterstützung",
@@ -31,20 +36,23 @@ const LocationOptions = () => {
     },
   ];
 
-return (
+  return (
     <section className="w-full py-16 px-4 bg-gray-50 animate-fadeIn">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
           Firmensitz Optionen
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
-          {locations.map((location, index) => (
+          {locations.map((location) => (
             <motion.div
               key={location.city}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:border-seablue transition-all duration-300 transform hover:scale-105"
+              className={`bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:scale-105 ${
+                selectedLocation === location.city
+                  ? "border-seablue ring-2 ring-seablue"
+                  : "border-gray-100 hover:border-seablue"
+              }`}
             >
               <div className="p-8">
                 <div className="flex items-center justify-center mb-6">
@@ -53,11 +61,11 @@ return (
                 </div>
                 <div className="text-center mb-8">
                   <p className="text-4xl font-bold text-seablue">
-                    {location.initialPrice}
+                    {location.initialPrice}€
                   </p>
                   <p className="text-gray-600">einmalig</p>
                   <p className="text-2xl font-semibold mt-4">
-                    {location.yearlyPrice}
+                    {location.yearlyPrice}€
                   </p>
                   <p className="text-gray-600">jährlich für Verlängerung</p>
                 </div>
@@ -74,8 +82,15 @@ return (
                 </div>
               </div>
               <div className="p-8 bg-gray-50">
-                <button className="w-full py-3 px-6 text-white bg-seablue rounded-lg hover:bg-seablue-dark transition-colors duration-300">
-                  Mehr erfahren
+                <button
+                  onClick={() => onSelectLocation(location.city, location.initialPrice, location.yearlyPrice)}
+                  className={`w-full py-3 px-6 text-white rounded-lg transition-colors duration-300 ${
+                    selectedLocation === location.city
+                      ? "bg-seablue-dark"
+                      : "bg-seablue hover:bg-seablue-dark"
+                  }`}
+                >
+                  {selectedLocation === location.city ? "Ausgewählt" : "Auswählen"}
                 </button>
               </div>
             </motion.div>
@@ -84,7 +99,6 @@ return (
       </div>
     </section>
   );
-
 };
 
 export default LocationOptions;

@@ -56,7 +56,7 @@ const OrderForm = () => {
   };
 
   return (
-    <section className="py-16 px-4 bg-gray-50 animate-fadeIn">
+    <section className="w-full py-16 px-4 animate-fadeIn">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
           Bestellformular
@@ -64,16 +64,16 @@ const OrderForm = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-lg shadow-lg p-8"
+          className="bg-white rounded-lg shadow-lg p-4 md:p-8"
         >
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-4">Anzahl der Seiten</h3>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4">
               {pageOptions.map((option) => (
                 <button
                   key={option.pages}
                   onClick={() => setSelectedPages(option.pages)}
-                  className={`p-4 rounded-lg border transition-all duration-300 ${
+                  className={`p-3 md:p-4 rounded-lg border transition-all duration-300 transform hover:scale-105 ${
                     selectedPages === option.pages
                       ? "border-seablue bg-seablue text-white"
                       : "border-gray-200 hover:border-seablue"
@@ -150,7 +150,7 @@ const OrderForm = () => {
             <div className="text-2xl font-bold mb-4">
               Gesamtpreis: {calculateTotal()}€
             </div>
-            <button className="py-3 px-8 bg-seablue text-white rounded-lg hover:bg-seablue-dark transition-colors duration-300">
+            <button className="w-full md:w-auto py-3 px-8 bg-seablue text-white rounded-lg hover:bg-seablue-dark transition-all duration-300 transform hover:scale-105">
               Anfrage absenden
             </button>
           </div>

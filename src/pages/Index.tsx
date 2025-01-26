@@ -11,9 +11,11 @@ const Index = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-white"
     >
-      <main className="container mx-auto">
+      <main className="w-full mx-auto">
         <PricingTable />
-        <OrderForm />
+        <div className="bg-gradient-to-b from-gray-50 to-white">
+          <OrderForm />
+        </div>
         <RequirementsList />
         <LocationOptions />
       </main>

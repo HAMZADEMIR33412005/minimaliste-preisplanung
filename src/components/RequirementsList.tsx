@@ -11,12 +11,12 @@ const RequirementsList = () => {
   ];
 
   return (
-    <section className="py-16 px-4 animate-fadeIn">
+    <section className="w-full py-16 px-4 animate-fadeIn">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-lg shadow-lg p-8"
+          className="bg-white rounded-lg shadow-lg p-4 md:p-8"
         >
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
             Was wir brauchen
@@ -28,7 +28,7 @@ const RequirementsList = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50"
+                className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
               >
                 <CheckCircle className="w-6 h-6 text-seablue flex-shrink-0" />
                 <span className="text-gray-700">{requirement}</span>

@@ -31,8 +31,8 @@ const LocationOptions = () => {
     },
   ];
 
-  return (
-    <section className="py-16 px-4 bg-gray-50 animate-fadeIn">
+return (
+    <section className="w-full py-16 px-4 bg-gray-50 animate-fadeIn">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
           Firmensitz Optionen
@@ -44,7 +44,7 @@ const LocationOptions = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:border-seablue transition-all duration-300"
+              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:border-seablue transition-all duration-300 transform hover:scale-105"
             >
               <div className="p-8">
                 <div className="flex items-center justify-center mb-6">
@@ -84,6 +84,7 @@ const LocationOptions = () => {
       </div>
     </section>
   );
+
 };
 
 export default LocationOptions;

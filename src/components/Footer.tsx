@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.footer 
       initial={{ y: 20, opacity: 0 }}
@@ -28,19 +35,28 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('hero')}
+                  className="text-white/80 hover:text-white transition-colors"
+                >
                   Home
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/about" className="text-white/80 hover:text-white transition-colors">
-                  Über uns
-                </Link>
+                <button
+                  onClick={() => scrollToSection('pricing')}
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Preise
+                </button>
               </li>
               <li>
-                <Link to="/contact" className="text-white/80 hover:text-white transition-colors">
-                  Kontakt
-                </Link>
+                <button
+                  onClick={() => scrollToSection('locations')}
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Standorte
+                </button>
               </li>
             </ul>
           </div>

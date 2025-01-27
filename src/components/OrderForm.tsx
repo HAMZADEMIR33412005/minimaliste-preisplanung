@@ -72,7 +72,7 @@ const OrderForm = ({ selectedPackage, packagePrice }: OrderFormProps) => {
           className="bg-white rounded-lg shadow-lg p-4 md:p-8"
         >
           <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-4">Anzahl der Seiten</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">Anzahl der Seiten</h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4">
               {pageOptions.map((option) => (
                 <button
@@ -80,8 +80,8 @@ const OrderForm = ({ selectedPackage, packagePrice }: OrderFormProps) => {
                   onClick={() => setSelectedPages(option.pages)}
                   className={`p-3 md:p-4 rounded-lg border transition-all duration-300 transform hover:scale-105 ${
                     selectedPages === option.pages
-                      ? "border-seablue bg-seablue text-white"
-                      : "border-gray-200 hover:border-seablue"
+                      ? "border-veluxe-primary bg-veluxe-primary text-white"
+                      : "border-gray-200 hover:border-veluxe-primary text-gray-900"
                   }`}
                 >
                   <div className="text-sm">{option.pages} Page{option.pages > 1 ? "s" : ""}</div>

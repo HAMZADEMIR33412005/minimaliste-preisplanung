@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.nav 
       initial={{ y: -20, opacity: 0 }}
@@ -20,15 +27,30 @@ const Navbar = () => {
           </Link>
           
           <div className="hidden md:flex space-x-8">
-            <Link to="/" className="text-white/90 hover:text-white transition-colors">
+            <button 
+              onClick={() => scrollToSection('hero')} 
+              className="text-white/90 hover:text-white transition-colors"
+            >
               Home
-            </Link>
-            <Link to="/about" className="text-white/90 hover:text-white transition-colors">
-              Über uns
-            </Link>
-            <Link to="/contact" className="text-white/90 hover:text-white transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('pricing')} 
+              className="text-white/90 hover:text-white transition-colors"
+            >
+              Preise
+            </button>
+            <button 
+              onClick={() => scrollToSection('locations')} 
+              className="text-white/90 hover:text-white transition-colors"
+            >
+              Standorte
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="text-white/90 hover:text-white transition-colors"
+            >
               Kontakt
-            </Link>
+            </button>
           </div>
         </div>
       </div>

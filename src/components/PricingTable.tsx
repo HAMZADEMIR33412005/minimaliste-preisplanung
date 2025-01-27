@@ -39,7 +39,7 @@ const PricingTable = ({ onSelectPackage, selectedPackage }: PricingTableProps) =
   ];
 
   return (
-    <section className="w-full py-16 px-4 animate-fadeIn">
+    <section id="pricing" className="w-full py-16 px-4 animate-fadeIn">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
           Unsere Pakete
@@ -53,13 +53,13 @@ const PricingTable = ({ onSelectPackage, selectedPackage }: PricingTableProps) =
               transition={{ delay: index * 0.2 }}
               className={`bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:scale-105 ${
                 selectedPackage === plan.name
-                  ? "border-seablue ring-2 ring-seablue"
-                  : "border-gray-100 hover:border-seablue"
+                  ? "border-veluxe-primary ring-2 ring-veluxe-primary"
+                  : "border-gray-100 hover:border-veluxe-primary"
               }`}
             >
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-center mb-4">{plan.name}</h3>
-                <p className="text-4xl font-bold text-center text-seablue mb-1">
+                <h3 className="text-2xl font-bold text-center mb-4 text-gray-900">{plan.name}</h3>
+                <p className="text-4xl font-bold text-center text-veluxe-primary mb-1">
                   {plan.price}
                   <span className="text-lg font-normal text-gray-600">{plan.suffix}</span>
                 </p>
@@ -73,7 +73,7 @@ const PricingTable = ({ onSelectPackage, selectedPackage }: PricingTableProps) =
                       <span className="font-medium">
                         {"included" in feature ? (
                           feature.included ? (
-                            <Check className="w-5 h-5 text-seablue" />
+                            <Check className="w-5 h-5 text-veluxe-primary" />
                           ) : (
                             <X className="w-5 h-5 text-gray-400" />
                           )
@@ -90,8 +90,8 @@ const PricingTable = ({ onSelectPackage, selectedPackage }: PricingTableProps) =
                   onClick={() => onSelectPackage(plan.name, plan.priceNumber)}
                   className={`w-full py-3 px-6 text-white rounded-lg transition-colors duration-300 transform hover:scale-105 ${
                     selectedPackage === plan.name
-                      ? "bg-seablue-dark"
-                      : "bg-seablue hover:bg-seablue-dark"
+                      ? "bg-veluxe-dark"
+                      : "bg-veluxe-primary hover:bg-veluxe-dark"
                   }`}
                 >
                   Auswählen

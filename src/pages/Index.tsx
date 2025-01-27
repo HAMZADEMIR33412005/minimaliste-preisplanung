@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import PricingTable from "@/components/PricingTable";
 import OrderForm from "@/components/OrderForm";
@@ -30,12 +32,9 @@ const Index = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="min-h-screen bg-white"
-    >
-      <main className="w-full mx-auto">
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <main className="pt-16">
         <Hero />
         <PricingTable 
           onSelectPackage={handlePackageSelect}
@@ -64,7 +63,8 @@ const Index = () => {
           locationYearlyPrice={locationYearlyPrice}
         />
       </main>
-    </motion.div>
+      <Footer />
+    </div>
   );
 };
 

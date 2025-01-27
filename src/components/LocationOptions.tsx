@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
-import { MapPin, Check, AlertTriangle } from "lucide-react";
+import { MapPin, Check, AlertTriangle, Info } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface LocationOptionsProps {
   onSelectLocation: (city: string, initialPrice: number, yearlyPrice: number) => void;
@@ -13,6 +18,7 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
       city: "Dubai",
       initialPrice: 14000,
       yearlyPrice: 8000,
+      info: "Idealer Standort für internationale Geschäfte mit 0% Einkommensteuer und strategischer Lage zwischen Ost und West.",
       benefits: [
         "Umfassende Beratung",
         "Visa-Beantragung",
@@ -26,6 +32,7 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
       city: "Miami",
       initialPrice: 8000,
       yearlyPrice: 4000,
+      info: "Perfekt für den amerikanischen Markt mit vorteilhaftem Steuersystem und einfachem Zugang zum US-Markt.",
       benefits: [
         "Geschäftsregistrierung",
         "Visa-Unterstützung",
@@ -40,21 +47,9 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
   return (
     <section className="w-full py-16 px-4 bg-gray-50 animate-fadeIn">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-6 text-gray-900">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
           Firmensitz Optionen
         </h2>
-        
-        <Alert variant="warning" className="mb-8 bg-amber-50 border-amber-200">
-          <AlertTriangle className="h-5 w-5 text-amber-600" />
-          <AlertDescription className="text-amber-800 ml-2">
-            <strong>Wichtige Information für österreichische Staatsbürger:</strong>
-            <ul className="list-disc ml-6 mt-2 space-y-1">
-              <li>Der Aufenthalt an einem Ort darf nicht länger als 6 Monate betragen</li>
-              <li>Es dürfen keine Anmeldungen (z.B. Wohnung) in Österreich bestehen</li>
-              <li>Der Lebensmittelpunkt darf nicht in Österreich sein</li>
-            </ul>
-          </AlertDescription>
-        </Alert>
 
         <div className="grid md:grid-cols-2 gap-8">
           {locations.map((location) => (
@@ -69,9 +64,19 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
               }`}
             >
               <div className="p-8">
-                <div className="flex items-center justify-center mb-6">
-                  <MapPin className="w-8 h-8 text-seablue mr-2" />
-                  <h3 className="text-2xl font-bold">{location.city}</h3>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center">
+                    <MapPin className="w-8 h-8 text-seablue mr-2" />
+                    <h3 className="text-2xl font-bold">{location.city}</h3>
+                  </div>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Info className="w-5 h-5 text-gray-400 hover:text-seablue transition-colors" />
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-xs">
+                      <p>{location.info}</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
                 <div className="text-center mb-8">
                   <p className="text-4xl font-bold text-seablue">
@@ -110,6 +115,18 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
             </motion.div>
           ))}
         </div>
+
+        <Alert className="mt-8 bg-amber-50 border-amber-200">
+          <AlertTriangle className="h-5 w-5 text-amber-600" />
+          <AlertDescription className="text-amber-800 ml-2">
+            <strong>Wichtige Information für österreichische Staatsbürger:</strong>
+            <ul className="list-disc ml-6 mt-2 space-y-1">
+              <li>Der Aufenthalt an einem Ort darf nicht länger als 6 Monate betragen</li>
+              <li>Es dürfen keine Anmeldungen (z.B. Wohnung) in Österreich bestehen</li>
+              <li>Der Lebensmittelpunkt darf nicht in Österreich sein</li>
+            </ul>
+          </AlertDescription>
+        </Alert>
       </div>
     </section>
   );

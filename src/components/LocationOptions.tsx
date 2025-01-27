@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { MapPin, Check } from "lucide-react";
+import { MapPin, Check, AlertTriangle } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface LocationOptionsProps {
   onSelectLocation: (city: string, initialPrice: number, yearlyPrice: number) => void;
@@ -39,9 +40,22 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
   return (
     <section className="w-full py-16 px-4 bg-gray-50 animate-fadeIn">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+        <h2 className="text-3xl font-bold text-center mb-6 text-gray-900">
           Firmensitz Optionen
         </h2>
+        
+        <Alert variant="warning" className="mb-8 bg-amber-50 border-amber-200">
+          <AlertTriangle className="h-5 w-5 text-amber-600" />
+          <AlertDescription className="text-amber-800 ml-2">
+            <strong>Wichtige Information für österreichische Staatsbürger:</strong>
+            <ul className="list-disc ml-6 mt-2 space-y-1">
+              <li>Der Aufenthalt an einem Ort darf nicht länger als 6 Monate betragen</li>
+              <li>Es dürfen keine Anmeldungen (z.B. Wohnung) in Österreich bestehen</li>
+              <li>Der Lebensmittelpunkt darf nicht in Österreich sein</li>
+            </ul>
+          </AlertDescription>
+        </Alert>
+
         <div className="grid md:grid-cols-2 gap-8">
           {locations.map((location) => (
             <motion.div

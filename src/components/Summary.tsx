@@ -80,15 +80,15 @@ const Summary = ({
           <div className="pt-4 space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold">Einmalige Kosten:</span>
-              <span className="text-xl font-bold text-seablue">{oneTimeTotal.toFixed(2)}€</span>
+              <span className="text-xl font-bold text-veluxe-primary">{oneTimeTotal.toFixed(2)}€</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold">Monatliche Kosten:</span>
-              <span className="text-xl font-bold text-seablue">{monthlyTotal.toFixed(2)}€</span>
+              <span className="text-xl font-bold text-veluxe-primary">{monthlyTotal.toFixed(2)}€</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold">Jährliche Kosten:</span>
-              <span className="text-xl font-bold text-seablue">{yearlyTotal.toFixed(2)}€</span>
+              <span className="text-xl font-bold text-veluxe-primary">{yearlyTotal.toFixed(2)}€</span>
             </div>
           </div>
         </div>

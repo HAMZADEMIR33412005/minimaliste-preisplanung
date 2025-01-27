@@ -45,9 +45,9 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
   ];
 
   return (
-    <section className="w-full py-16 px-4 bg-gray-50 animate-fadeIn">
+    <section className="w-full py-16 px-4 bg-gradient-primary animate-fadeIn">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">
           Firmensitz Optionen
         </h2>
 
@@ -59,19 +59,19 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
               animate={{ opacity: 1, y: 0 }}
               className={`bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:scale-105 ${
                 selectedLocation === location.city
-                  ? "border-seablue ring-2 ring-seablue"
-                  : "border-gray-100 hover:border-seablue"
+                  ? "border-veluxe-light ring-2 ring-veluxe-light"
+                  : "border-gray-100 hover:border-veluxe-light"
               }`}
             >
               <div className="p-8">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center">
-                    <MapPin className="w-8 h-8 text-seablue mr-2" />
+                    <MapPin className="w-8 h-8 text-veluxe-primary mr-2" />
                     <h3 className="text-2xl font-bold">{location.city}</h3>
                   </div>
                   <Tooltip>
                     <TooltipTrigger>
-                      <Info className="w-5 h-5 text-gray-400 hover:text-seablue transition-colors" />
+                      <Info className="w-5 h-5 text-gray-400 hover:text-veluxe-primary transition-colors" />
                     </TooltipTrigger>
                     <TooltipContent className="max-w-xs">
                       <p>{location.info}</p>
@@ -79,7 +79,7 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
                   </Tooltip>
                 </div>
                 <div className="text-center mb-8">
-                  <p className="text-4xl font-bold text-seablue">
+                  <p className="text-4xl font-bold text-veluxe-primary">
                     {location.initialPrice}€
                   </p>
                   <p className="text-gray-600">einmalig</p>
@@ -94,7 +94,7 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
                       key={benefit}
                       className="flex items-center space-x-3 text-gray-700"
                     >
-                      <Check className="w-5 h-5 text-seablue flex-shrink-0" />
+                      <Check className="w-5 h-5 text-veluxe-primary flex-shrink-0" />
                       <span>{benefit}</span>
                     </div>
                   ))}
@@ -105,8 +105,8 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
                   onClick={() => onSelectLocation(location.city, location.initialPrice, location.yearlyPrice)}
                   className={`w-full py-3 px-6 text-white rounded-lg transition-colors duration-300 ${
                     selectedLocation === location.city
-                      ? "bg-seablue-dark"
-                      : "bg-seablue hover:bg-seablue-dark"
+                      ? "bg-veluxe-dark"
+                      : "bg-veluxe-primary hover:bg-veluxe-dark"
                   }`}
                 >
                   {selectedLocation === location.city ? "Ausgewählt" : "Auswählen"}
@@ -116,9 +116,9 @@ const LocationOptions = ({ onSelectLocation, selectedLocation }: LocationOptions
           ))}
         </div>
 
-        <Alert className="mt-8 bg-amber-50 border-amber-200">
-          <AlertTriangle className="h-5 w-5 text-amber-600" />
-          <AlertDescription className="text-amber-800 ml-2">
+        <Alert className="mt-8 bg-white/90 border-veluxe-primary">
+          <AlertTriangle className="h-5 w-5 text-veluxe-primary" />
+          <AlertDescription className="text-veluxe-dark ml-2">
             <strong>Wichtige Information für österreichische Staatsbürger:</strong>
             <ul className="list-disc ml-6 mt-2 space-y-1">
               <li>Der Aufenthalt an einem Ort darf nicht länger als 6 Monate betragen</li>

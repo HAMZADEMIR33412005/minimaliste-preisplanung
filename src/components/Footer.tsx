@@ -6,34 +6,39 @@ const Footer = () => {
     <motion.footer 
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="bg-gray-50 border-t border-gray-200"
+      className="bg-gradient-primary"
     >
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold text-seablue">veluxe.dev</span>
+            <Link to="/" className="flex items-center space-x-2">
+              <img 
+                src="/lovable-uploads/95525972-3531-4227-a33c-2b8c31af4bfe.png" 
+                alt="Veluxe Logo" 
+                className="h-8 w-8"
+              />
+              <span className="text-2xl font-bold text-white">VELUXE</span>
             </Link>
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-white/80">
               Ihre Experten für internationale Geschäftsgründung und Optimierung
             </p>
           </div>
           
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Links</h3>
+            <h3 className="font-semibold text-white mb-4">Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-600 hover:text-seablue transition-colors">
+                <Link to="/" className="text-white/80 hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-seablue transition-colors">
+                <Link to="/about" className="text-white/80 hover:text-white transition-colors">
                   Über uns
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-600 hover:text-seablue transition-colors">
+                <Link to="/contact" className="text-white/80 hover:text-white transition-colors">
                   Kontakt
                 </Link>
               </li>
@@ -41,20 +46,20 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Rechtliches</h3>
+            <h3 className="font-semibold text-white mb-4">Rechtliches</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/privacy" className="text-gray-600 hover:text-seablue transition-colors">
+                <Link to="/privacy" className="text-white/80 hover:text-white transition-colors">
                   Datenschutz
                 </Link>
               </li>
               <li>
-                <Link to="/imprint" className="text-gray-600 hover:text-seablue transition-colors">
+                <Link to="/imprint" className="text-white/80 hover:text-white transition-colors">
                   Impressum
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-600 hover:text-seablue transition-colors">
+                <Link to="/terms" className="text-white/80 hover:text-white transition-colors">
                   AGB
                 </Link>
               </li>
@@ -62,8 +67,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-center text-gray-600">
+        <div className="mt-8 pt-8 border-t border-white/10">
+          <p className="text-center text-white/80">
             © {new Date().getFullYear()} veluxe.dev. Alle Rechte vorbehalten.
           </p>
         </div>
